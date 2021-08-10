@@ -11,6 +11,7 @@ import java.util.Date;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.fis.springlearn.bean.Employee;
@@ -26,7 +27,17 @@ public class SpringLearnApplication {
 		//displayCountry();
 		//displayCountries();
 		//displayEmployee();
-		getEmployeeController();
+		//getEmployeeController();
+		ApplicationContext applicationContext = new AnnotationConfigApplicationContext(EmployeeController.class);
+		displayEmployeeControllerAnnotation(applicationContext);
+	}
+	public static void displayEmployeeControllerAnnotation(ApplicationContext applicationContext) {
+		LOGGER.info("START");
+		EmployeeController employeeController = applicationContext.getBean("employeeController",
+				EmployeeController.class);
+		LOGGER.debug("EmployeeController : {}", employeeController);
+		LOGGER.info("END");
+
 	}
 	static void getEmployeeController() {
 		LOGGER.info("START");
