@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import org.springframework.boot.SpringApplication;
@@ -19,7 +20,16 @@ public class SpringLearnApplication {
 	public static void main(String[] args) {
 		////SpringApplication.run(SpringLearnApplication.class, args);
 		//displayDate();
-		displayCountry();
+		//displayCountry();
+		displayCountries();
+	}
+	static void displayCountries()
+	{
+		LOGGER.info("START");
+		ApplicationContext context = new ClassPathXmlApplicationContext("country.xml");
+		ArrayList<Country> countries = context.getBean("countryList", ArrayList.class);
+		LOGGER.debug("Countries : {}", countries);
+		LOGGER.info("END");
 	}
 	static void displayCountry()
 	{
