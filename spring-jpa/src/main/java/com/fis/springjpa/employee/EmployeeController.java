@@ -24,7 +24,7 @@ public class EmployeeController {
     Employee n = new Employee();
     n.setName(name);
     n.setId(id);
-    //EmployeeRepository.save(n);
+    employeeRepository.save(n);
     return "Saved";
   }
 
