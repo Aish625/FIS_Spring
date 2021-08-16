@@ -17,7 +17,7 @@ public class EmployeeDAOImpl extends JdbcDaoSupport implements IEmployee {
 
 	public void insertEmployee(Employee employee) {
 
-		String sql = "insert into product values(?,?)";
+		String sql = "insert into employee values(?,?)";
 		Object[] args = { employee.getId(), employee.getName() };
 		int insertedRows = getJdbcTemplate().update(sql, args);
 		System.out.println("Rows Inserted: " + insertedRows);
